@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:restaurant.ViewModels" xmlns:local1="clr-namespace:restaurant.Pages.Loader"
+             x:Class="restaurant.Pages.MealPage">
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Meals List"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+
+            <ListView VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" HasUnevenRows="True" SeparatorVisibility="Default" SeparatorColor="Black" ItemsSource="{Binding Items}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Label Grid.Row="0" Grid.Column="1" TextColor="Black" VerticalOptions="CenterAndExpand" FontSize="14" Text="{Binding strMeal}" />
+                                <Image Grid.Row="0" Grid.Column="0" HeightRequest="80" WidthRequest="80" Source="{Binding strMealThumb}" 
+                                         />
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="GetDetail"  CommandParameter="{Binding idMeal}"/>
+                                </Grid.GestureRecognizers>
+                            </Grid>
+                            
+                        </ViewCell>
+                        
+                       
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <local1:Loader IsLoading="{Binding IsLoading}" IsVisible="{Binding IsLoading}" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

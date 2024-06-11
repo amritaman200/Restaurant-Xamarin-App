@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local1="clr-namespace:restaurant.Pages.Loader"
+             x:Class="restaurant.Pages.ModalPages.MealDetail">
+    <ContentPage.Content>
+        <StackLayout Padding="0,20,0,0">
+            <Label HorizontalOptions="StartAndExpand" Text="Close" VerticalOptions="Start" TextColor="Blue" FontSize="18">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                </Label.GestureRecognizers>
+            </Label>
+            <CollectionView  ItemsSource="{Binding Items}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Orientation="Vertical" Padding="10">
+                            <Label HorizontalOptions="CenterAndExpand" Text="{Binding strMeal}" TextColor="Black" FontSize="20"/>
+                            <Image Source="{Binding strMealThumb}" HeightRequest="200" WidthRequest="150" />
+                            <Label Text="{Binding strInstructions}" />
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <local1:Loader VerticalOptions="FillAndExpand" IsLoading="{Binding IsLoading}" />
+
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

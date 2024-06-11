@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="restaurant.Pages.CategoriesPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Recipies List"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+
+            <ListView  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" HasUnevenRows="True" SelectionMode="None" SeparatorColor="Black" ItemsSource="{Binding Items}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid   Padding="5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="20" />
+                                    <RowDefinition Height="70" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" HorizontalOptions="CenterAndExpand" TextColor="Black" FontSize="14" Text="{Binding strCategory}" />
+                                <Image Grid.Row="1" Grid.Column="0" VerticalOptions="Fill"  Source="{Binding strCategoryThumb}" 
+                              />
+                                <Label Grid.Row="2" Grid.Column="0" Text="{Binding strCategoryDescription}">
+                                    
+                                </Label>
+                            </Grid>
+
+                        </ViewCell>
+
+
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
